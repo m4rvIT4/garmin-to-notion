@@ -41,7 +41,9 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           NOTION_PR_DB_ID: ${{ secrets.NOTION_PR_DB_ID }}
-          TZ: 'America/Montreal'
+          NOTION_STEPS_DB_ID: ${{ secrets.NOTION_STEPS_DB_ID }}
+          TZ: 'Europe/Berlin'
         run: |
           python garmin-activities.py
           python personal-records.py
+          python daily-steps.py
