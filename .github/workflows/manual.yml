@@ -47,3 +47,4 @@ jobs:
           python garmin-activities.py
           python personal-records.py
           python daily-steps.py
+          python weekly-goals.py
