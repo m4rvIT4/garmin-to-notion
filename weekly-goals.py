@@ -36,6 +36,11 @@ def write_row(client, weekday):
 
 def resetWeeklyGoals(client):
     for key, value in page_id_dict.items():
+        content = client.pages.retrieve(page_id=key)
+        progress = content['properties']['Progress']['formula']['number'] > 0.99
+        streak = content['properties']['Streak']['number']
+        streak = streak + 1 if progress else 0
+        
         client.pages.update(
             **{
                 "page_id": key,
@@ -46,7 +51,8 @@ def resetWeeklyGoals(client):
                     "Thu": {"checkbox": False},
                     "Fri": {"checkbox": False},
                     "Sat": {"checkbox": False},
-                    "Sun": {"checkbox": False}
+                    "Sun": {"checkbox": False},
+                    "Streak": {"number": streak}
                 }
             }
         )
