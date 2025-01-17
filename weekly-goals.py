@@ -83,6 +83,7 @@ def main():
     activity = garmin.get_activities_by_date(today)
     for i in range(len(activity)):
         #print(activity[i]['activityType']['typeKey'], "\n")
+        if today not in activity[i]['startTimeLocal']: activity[i]['activityType']['typeKey'] = "unknown"
         if activity[i]['activityType']['typeKey']=="pilates": pilates=True
         if activity[i]['activityType']['typeKey']=="running": run=True
         if activity[i]['activityType']['typeKey']=="mixed_martial_arts": vovinam=True
